@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
+import { Instagram, MessageCircle } from 'lucide-react';
 import { useLang } from '@/i18n/LanguageContext';
+import { WeChatIcon } from '@/components/icons/WeChatIcon';
+import { socials } from '@/config/socials';
 import logo from '@/assets/souqi-logo.png';
 
 export default function Footer() {
@@ -9,7 +12,21 @@ export default function Footer() {
       <div className="container-app py-12 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <img src={logo} alt="SOUQI" className="h-14 w-auto mb-3" />
-          <p className="text-muted-foreground max-w-sm text-sm">{t.footer.tagline}</p>
+          <p className="text-muted-foreground max-w-sm text-sm mb-4">{t.footer.tagline}</p>
+          <div className="flex gap-2">
+            <a href={socials.whatsapp.url} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+              className="h-10 w-10 rounded-xl bg-card border flex items-center justify-center hover:border-primary hover:text-primary transition-base">
+              <MessageCircle className="h-5 w-5" />
+            </a>
+            <a href={socials.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              className="h-10 w-10 rounded-xl bg-card border flex items-center justify-center hover:border-primary hover:text-primary transition-base">
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a href={socials.wechat.url} target="_blank" rel="noopener noreferrer" aria-label="WeChat"
+              className="h-10 w-10 rounded-xl bg-card border flex items-center justify-center hover:border-primary hover:text-primary transition-base">
+              <WeChatIcon className="h-5 w-5" />
+            </a>
+          </div>
         </div>
         <div>
           <h4 className="font-semibold mb-3 text-sm">{t.footer.product}</h4>

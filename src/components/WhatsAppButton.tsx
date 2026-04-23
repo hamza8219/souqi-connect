@@ -1,10 +1,10 @@
 import { MessageCircle } from 'lucide-react';
+import { socials } from '@/config/socials';
 
 export default function WhatsAppButton() {
-  const phone = '212600000000'; // placeholder
   return (
     <a
-      href={`https://wa.me/${phone}`}
+      href={socials.whatsapp.url}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
