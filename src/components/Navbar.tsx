@@ -61,6 +61,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
+          <ThemeToggle />
           <Button variant="ghost" size="sm" onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')} className="gap-2">
             <Globe className="h-4 w-4" />
             {lang === 'ar' ? 'EN' : 'عربي'}
@@ -76,9 +77,12 @@ export default function Navbar() {
           <Button variant="hero" size="sm" asChild><Link to="/request">{t.nav.requestProduct}</Link></Button>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden p-2 rounded-lg hover:bg-muted transition-base" aria-label="menu">
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-1 lg:hidden">
+          <ThemeToggle />
+          <button onClick={() => setOpen(!open)} className="p-2 rounded-lg hover:bg-muted transition-base" aria-label="menu">
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {open && (
