@@ -4,6 +4,7 @@ import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLang } from '@/i18n/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
+import ThemeToggle from '@/components/ThemeToggle';
 import logo from '@/assets/souqi-logo.png';
 
 export default function Navbar() {
