@@ -92,16 +92,18 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
+    overflow-x: hidden;
   }
   html[dir="rtl"] body {
     font-family: 'Cairo', 'Inter', system-ui, sans-serif;
   }
-  h1, h2, h3, h4 { @apply tracking-tight; font-weight: 700; }
+  h1, h2, h3, h4 { @apply tracking-tight; font-weight: 700; word-wrap: break-word; }
+  img { max-width: 100%; height: auto; }
 }
 
 @layer utilities {
