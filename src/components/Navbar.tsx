@@ -12,6 +12,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,8 +23,19 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => setUser(session?.user ?? null));
+    const checkAdmin = async (uid: string | undefined) => {
+      if (!uid) { setIsAdmin(false); return; }
+      const { data } = await supabase.rpc('has_role', { _user_id: uid, _role: 'admin' });
+      setIsAdmin(!!data);
+    };
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
+      checkAdmin(data.session?.user?.id);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setUser(session?.user ?? null);
+      checkAdmin(session?.user?.id);
+    });
     return () => sub.subscription.unsubscribe();
   }, []);
 
@@ -69,6 +81,9 @@ export default function Navbar() {
           {user ? (
             <>
               <Button variant="ghost" size="sm" asChild><Link to="/dashboard">{t.nav.dashboard}</Link></Button>
+              {isAdmin && (
+                <Button variant="ghost" size="sm" asChild><Link to="/admin">Admin</Link></Button>
+              )}
               <Button variant="outline" size="sm" onClick={handleLogout}>{t.nav.logout}</Button>
             </>
           ) : (
