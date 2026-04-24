@@ -44,7 +44,6 @@ export default function Navbar() {
     { to: '/services', label: t.nav.services },
     { to: '/how-it-works', label: t.nav.howItWorks },
     { to: '/pricing', label: t.nav.pricing },
-    { to: '/calculator', label: t.nav.calculator },
     { to: '/dropshipping', label: t.nav.dropshipping },
     { to: '/contact', label: t.nav.contact },
   ];

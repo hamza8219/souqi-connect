@@ -12,7 +12,6 @@ import RequestProduct from "./pages/RequestProduct";
 import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
 import Pricing from "./pages/Pricing";
-import Calculator from "./pages/Calculator";
 import Tracking from "./pages/Tracking";
 import Dropshipping from "./pages/Dropshipping";
 import FAQ from "./pages/FAQ";
@@ -39,7 +38,6 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/calculator" element={<Calculator />} />
             <Route path="/tracking" element={<Tracking />} />
             <Route path="/dropshipping" element={<Dropshipping />} />
             <Route path="/faq" element={<FAQ />} />
